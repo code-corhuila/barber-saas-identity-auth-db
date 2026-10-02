@@ -33,3 +33,20 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: false
             stripComments: false
+  - changeSet:
+      id: ddl-tables-003
+      author: Pipecerquera
+      labels: "HU-AUTH-001,ddl,tables"
+      comment: "password_reset_token: 6-digit code, stored hashed, 15 minutes, single use."
+      changes:
+        - sqlFile:
+            path: 003_create_password_reset_token.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/03_tables/003_create_password_reset_token.rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
