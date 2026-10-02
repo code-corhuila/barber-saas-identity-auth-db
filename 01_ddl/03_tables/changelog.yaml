@@ -67,3 +67,20 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: false
             stripComments: false
+  - changeSet:
+      id: ddl-tables-005
+      author: Pipecerquera
+      labels: "HU-AUTH-001,ddl,tables"
+      comment: "outbox_event: the change and its event in one transaction (norm 5.3.11)."
+      changes:
+        - sqlFile:
+            path: 005_create_outbox_event.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/03_tables/005_create_outbox_event.rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
