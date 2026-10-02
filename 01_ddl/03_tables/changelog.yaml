@@ -1,1 +1,18 @@
-databaseChangeLog: []
+databaseChangeLog:
+  - changeSet:
+      id: ddl-tables-001
+      author: Pipecerquera
+      labels: "HU-AUTH-001,ddl,tables"
+      comment: "app_user: one role per user; the tenant only for ADMIN_BARBERSHOP and BARBER. No foreign keys here."
+      changes:
+        - sqlFile:
+            path: 001_create_app_user.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/03_tables/001_create_app_user.rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
