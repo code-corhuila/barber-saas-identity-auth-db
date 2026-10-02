@@ -1,1 +1,18 @@
-databaseChangeLog: []
+databaseChangeLog:
+  - changeSet:
+      id: ddl-indexes-001
+      author: Pipecerquera
+      labels: "HU-AUTH-001,ddl,indexes"
+      comment: "Unique e-mail (case-insensitive), foreign key columns and the tenant lookup."
+      changes:
+        - sqlFile:
+            path: 001_create_indexes.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/10_indexes/001_create_indexes.rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
