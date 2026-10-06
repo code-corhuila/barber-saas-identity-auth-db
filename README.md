@@ -31,12 +31,12 @@ Full policy: `00-governance/branching-policy.md` in `barber-saas-docs`.
 The `identity_auth` schema (users, refresh tokens, password-reset codes, idempotency keys,
 outbox) versioned with Liquibase (ADR-007), following annex A and Annex J: it has **no database
 instance of its own**. Its runner applies the changesets to the single PostgreSQL instance of
-`barber-saas-infra`, with its own changelog tables (`databasechangelog_identity_auth`).
+`barber-saas-infra-postgres`, with its own changelog tables (`databasechangelog_identity_auth`).
 Model: `06-data/models.md` §2 and §10 in `barber-saas-docs`.
 
 ### How to run the migrations
 
-From `barber-saas-infra`, with the platform up:
+From `barber-saas-infra-postgres`, with the platform up:
 
 ```bash
 docker compose --env-file env/dev.env run --rm identity-auth-db-migrate            # update
