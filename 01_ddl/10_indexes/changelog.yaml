@@ -16,3 +16,20 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: false
             stripComments: false
+  - changeSet:
+      id: ddl-indexes-002
+      author: Pipecerquera
+      labels: "HU-AUTH-002,ddl,indexes"
+      comment: "The pending outbox index leaves failed events out; it replaces the one of ddl-indexes-001 instead of editing it."
+      changes:
+        - sqlFile:
+            path: 002_replace_outbox_event_unpublished.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/10_indexes/002_replace_outbox_event_unpublished.rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false

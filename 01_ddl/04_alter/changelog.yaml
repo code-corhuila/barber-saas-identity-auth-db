@@ -16,3 +16,20 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: false
             stripComments: false
+  - changeSet:
+      id: ddl-alter-002
+      author: Pipecerquera
+      labels: "HU-AUTH-002,ddl,alter"
+      comment: "outbox_event: failed_at and last_error, so the worker can set aside an event it cannot deliver (ADR-016)."
+      changes:
+        - sqlFile:
+            path: 002_add_outbox_event_failure.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/04_alter/002_add_outbox_event_failure.rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
