@@ -1,0 +1,1 @@
+DROP INDEX IF EXISTS identity_auth.idx_email_verification_code_user_created;
