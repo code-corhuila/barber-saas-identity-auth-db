@@ -84,3 +84,20 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: false
             stripComments: false
+  - changeSet:
+      id: ddl-tables-006
+      author: Pipecerquera
+      labels: "HU-AUTH-004,ddl,tables"
+      comment: "email_verification_code: 6-digit code, stored hashed, 15 minutes, single use (ADR-018)."
+      changes:
+        - sqlFile:
+            path: 006_create_email_verification_code.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/03_tables/006_create_email_verification_code.rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
