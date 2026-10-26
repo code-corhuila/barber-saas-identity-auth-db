@@ -33,3 +33,20 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: false
             stripComments: false
+  - changeSet:
+      id: ddl-indexes-003
+      author: Pipecerquera
+      labels: "HU-AUTH-004,ddl,indexes"
+      comment: "The codes of a user by creation time (ADR-018)."
+      changes:
+        - sqlFile:
+            path: 003_create_email_verification_code_index.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/10_indexes/003_create_email_verification_code_index.rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
