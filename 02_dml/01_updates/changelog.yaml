@@ -1,1 +1,18 @@
-databaseChangeLog: []
+databaseChangeLog:
+  - changeSet:
+      id: dml-updates-001
+      author: Pipecerquera
+      labels: "HU-AUTH-004,dml,updates"
+      comment: "Accounts created before e-mail verification count as verified (ADR-018)."
+      changes:
+        - sqlFile:
+            path: 001_verify_existing_users.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/02_dml/01_updates/001_verify_existing_users.rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
