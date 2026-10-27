@@ -50,3 +50,20 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: false
             stripComments: false
+  - changeSet:
+      id: ddl-alter-004
+      author: Pipecerquera
+      labels: "HU-AUTH-004,ddl,alter"
+      comment: "failed_attempts of the reset and verification codes: a code stops working after 5 wrong attempts (SEC-03)."
+      changes:
+        - sqlFile:
+            path: 004_add_code_failed_attempts.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/04_alter/004_add_code_failed_attempts.rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
